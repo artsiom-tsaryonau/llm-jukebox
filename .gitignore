@@ -4,3 +4,5 @@ _server.py
 /downloads
 *.key
 /__pycache__
+.vscode/
+cookies.txt

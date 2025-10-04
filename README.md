@@ -60,10 +60,10 @@ If you have no other entries, the full JSON should look something like this:
 		"pygame",
 		"fastmcp",
 		"run",
-        "c:/users/user/llm-jukebox/server.py"
+        "/home/atsaryonau/projects/llm-jukebox/server.py"
       ],
       "env": {
-        "DOWNLOAD_PATH": "c:/users/user/downloads"
+        "DOWNLOAD_PATH": "/home/atsaryonau/downloads"
       }
     }
   }
@@ -82,6 +82,59 @@ This tool is intended for personal use with content you have the right to downlo
 - Content creators' rights
 
 Always respect intellectual property and consider supporting artists through official channels.
+
+## Docker Usage
+
+### Building the Docker Image
+
+```bash
+# Build the image
+docker build -t llm-jukebox .
+```
+
+### Running with Docker
+
+```bash
+# Run the container
+docker run -it --rm \
+  -v $(pwd)/downloads:/app/downloads \
+  llm-jukebox
+```
+
+### MCP Configuration for Docker
+
+To use the Dockerized version with MCP, add this configuration to your `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "llm-jukebox-docker": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--name",
+        "llm-jukebox",
+        "-v",
+        "/home/atsaryonau/downloads:/app/downloads",
+        "-e",
+        "DOWNLOAD_PATH=/app/downloads",
+        "llm-jukebox:latest"
+      ],
+      "env": {
+        "DOWNLOAD_PATH": "/app/downloads"
+      }
+    }
+  }
+}
+```
+
+**Important Notes:**
+- Replace `/path/to/your/downloads` with the actual path where you want music files stored
+- The `-v` flag mounts your local downloads directory into the container
+- The `--rm` flag automatically removes the container when it stops
+- The `-i` flag keeps STDIN open for MCP communication
 
 ## Credit
 
