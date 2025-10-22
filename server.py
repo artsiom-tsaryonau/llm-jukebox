@@ -129,15 +129,14 @@ def download_and_store_track(video_info: Dict[str, Any], query: str) -> str:
         raise Exception(f"Failed to download track: {str(e)}")
 
 @mcp.tool()
-def download_and_play(query: str) -> str:
-    """	Search for and play a song. If the song is already in the library it 
-		will play the existing version, otherwise it will download it first.
+def download(query: str) -> str:
+    """	Search for a song to download.
 
     Args:
         query: Search query for music (artist, song, album, etc.)
 
     Returns:
-        Success message with file info, or error message if download/play failed
+        Success message with file info, or error message if download failed
     """
     try:
         
