@@ -14,7 +14,7 @@ logging.getLogger("yt_dlp").setLevel(logging.CRITICAL)
 logging.getLogger("urllib3").setLevel(logging.CRITICAL)
 
 mcp = FastMCP("LLM Jukebox")
-download_path = Path(os.environ.get("DOWNLOAD_PATH", "./"))
+download_path = Path("./downloads")
 download_path.mkdir(exist_ok=True)
 
 YT_DLP_BASE_OPTS = {

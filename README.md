@@ -108,7 +108,7 @@ To use the Dockerized version with MCP, add this configuration to your `mcp.json
 ```json
 {
   "mcpServers": {
-    "llm-jukebox-docker": {
+    "llm-jukebox": {
       "command": "docker",
       "args": [
         "run",
@@ -121,10 +121,7 @@ To use the Dockerized version with MCP, add this configuration to your `mcp.json
         "-e",
         "DOWNLOAD_PATH=/app/downloads",
         "llm-jukebox:latest"
-      ],
-      "env": {
-        "DOWNLOAD_PATH": "/app/downloads"
-      }
+      ]
     }
   }
 }
