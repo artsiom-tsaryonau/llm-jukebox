@@ -21,10 +21,11 @@ YT_DLP_BASE_OPTS = {
     "no_warnings": True,
     "quiet": True,
     "audioquality": "0",  # Best quality
-    "outtmpl": str(download_path / "%(title)s.%(ext)s"),
+    "outtmpl": str(download_path / "%(title)s" / "%(title)s.%(ext)s"),
     "noplaylist": True,
     "extract_flat": False,
     "logger": logging.getLogger("yt_dlp"),
+    "writethumbnail": True
 }
 
 def suppress_output(func):
