@@ -4,7 +4,6 @@ FROM python:3.13-slim
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYGAME_HIDE_SUPPORT_PROMPT=1
 ENV DOWNLOAD_PATH=/app/downloads
 
 # Install system dependencies
@@ -37,4 +36,4 @@ RUN mkdir -p /app/downloads
 RUN uv sync --frozen
 
 # Set the default command to run the MCP server
-CMD ["uv", "run", "--with", "fastmcp", "--with", "yt-dlp", "--with", "tinydb", "--with", "tinydb", "--with", "pygame", "fastmcp", "run", "server.py"]
+CMD ["uv", "run", "--with", "fastmcp", "--with", "yt-dlp", "fastmcp", "run", "server.py"]
