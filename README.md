@@ -11,7 +11,7 @@ A Model Context Protocol (MCP) server that enables LLMs to search, download, and
 - **Logging**: Debug-level logging to file and stderr
 
 ### Installation
-
+- **Create cookie file** Use `yt-dlp https://www.youtube.com --cookies cookies.txt --cookies-from-browser firefox`
 - **Get the Files**: Clone the repo or download and extract the zip
 - **Get FFMPEG**: Make sure you have ffmpeg. In windows open a terminal and type `winget install ffmpeg`, in Ubuntu or Debian do `sudo apt install ffmpeg`
 - **Load a Tool Capable Model**: Ensure you have a model that is trained to handle tools properly. Qwen 3 and Gemma 3 are good choices.
@@ -118,8 +118,6 @@ To use the Dockerized version with MCP, add this configuration to your `mcp.json
         "llm-jukebox",
         "-v",
         "/home/atsaryonau/downloads:/app/downloads",
-        "-e",
-        "DOWNLOAD_PATH=/app/downloads",
         "llm-jukebox:latest"
       ]
     }
