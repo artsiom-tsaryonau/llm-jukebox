@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6 \
     libportmidi0 \
     libasound2 \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv package manager

@@ -26,6 +26,7 @@ YT_DLP_BASE_OPTS = {
     "extract_flat": False,
     "logger": logging.getLogger("yt_dlp"),
     "writethumbnail": True
+    # "cookiefile": str(download_path / "cookies.txt") somehow it works
 }
 
 def suppress_output(func):
@@ -128,7 +129,7 @@ def download_and_store_track(video_info: Dict[str, Any], query: str) -> str:
     except Exception as e:
         raise Exception(f"Failed to download track: {str(e)}")
 
-@mcp.tool()
+@mcp.tool(name="download_and_store_track")
 def download(query: str) -> str:
     """	Search for a song to download.
 
@@ -152,15 +153,12 @@ def download(query: str) -> str:
         return result
 
     except Exception as e:
-        error_msg = f"❌ Error processing request: {str(e)}"
+        error_msg = f"Error processing request: {str(e)}"
         return error_msg
 
-if __name__ == "__main__":
-    try:
-        mcp.run(transport="stdio")
-    except KeyboardInterrupt:
-        # Handle graceful shutdown without breaking JSON-RPC
-        pass
-    except Exception as e:
-        # Log error internally but don't output to stdio
-        pass
+def main() -> None:
+    """Run the MCP server."""
+    mcp.run()
+
+if __name__ == '__main__':  # pragma: no cover
+    main()
